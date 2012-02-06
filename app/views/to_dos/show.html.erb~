@@ -1,0 +1,11 @@
+Title:<%= @to_do.title%><br/>
+Notes:<%= @to_do.notes%><br/>
+FromDate:<%= @to_do.from_date%><br/>
+ToDate:<%= @to_do.to_date%><br/>
+Assignedto:<%= @to_do.assign_to%><br/>
+Category A:<%= @to_do.category_a%><br/>
+Category B:<%= @to_do.category_b%><br/>
+Category C:<%= @to_do.category_c%><br/>
+<%end%>
+<%= link_to 'Edit', edit_to_do_path(@to_do) %>
+<%= link_to 'Back', to_dos_path %>

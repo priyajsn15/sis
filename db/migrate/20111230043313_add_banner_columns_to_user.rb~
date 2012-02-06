@@ -1,0 +1,10 @@
+class AddBannerColumnsToUser < ActiveRecord::Migration
+  def change
+    #add_column :users,:banner,:has_attached_file 
+    #add_column :to_dos,:status,:integer
+    
+#add_column :assignments,:status,:integer
+ #   add_column :events,:status,:integer
+  #  add_column :goals,:status,:integer
+  end
+end

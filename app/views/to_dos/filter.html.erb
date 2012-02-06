@@ -1,0 +1,38 @@
+<h3>Todo's</h3>
+<%if @to_dos.present?%>
+<table border=1>
+  <thead>
+ <tr>
+   <th>Id</th>
+   <th>Title</th>
+   <th>From Date</th>
+   <%unless current_user.is_admin?%><th>Action</th><%end%>
+ </tr>
+</thead>
+<tbody>
+<% @to_dos.each do |to_do| %>
+ <tr  class="parent" id="<%=to_do.id%>" style="cursor: pointer; " title="Click">
+         <td><%= to_do.id%></td>
+   <td><%= to_do.title%></td>
+   <td><%= to_do.start%></td>
+   <%unless current_user.is_admin?%><td> 
+ <%=link_to "Set Status",edit_to_do_path(to_do)%>
+ </td><%end%>
+ </tr>
+  <tr class="child-<%=to_do.id%>" style="display : none;">
+   <td></td>
+   <td><%= to_do.notes%></td>
+   <td><%= to_do.end%></td> 
+    <td><%= to_do.assign_to%></td>
+   <td><%if to_do.category_a==true%><%=to_do.category_a%><%end%>
+           <%if to_do.category_b==true%><%=to_do.category_b%><%end%>
+          <%if to_do.category_c==true%><%=to_do.category_c%><%end%></td>
+ </tr>
+<% end %>
+</tbody>
+</table>
+<%else%>
+<p>No Users</p>
+<%end%>
+<%=link_to 'Back',to_dos_path%>
+

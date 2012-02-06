@@ -1,0 +1,19 @@
+<%=form_for @event do |f|%>
+<%if current_user.is_admin?%>
+Title:<%=f.text_field :title%><br/>
+Notes:<%=f.text_area  :notes, :size => "20*20"%><br/>
+FromDate:<%=f.text_field :from_date%><br/>
+ToDate:<%=f.text_field :to_date%><br/>
+From Time:<%= f.text_field :from_time%><br/>
+To Time:<%= f.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]}),:prompt=>"select student"%><br/>
+Category:<%=f.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=f.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=f.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%end%>
+<%unless current_user.is_admin?%>
+Status:<%=f.radio_button  "status", "1"%>Complete
+<%=f.radio_button  "status", "0"%>Pending<br/><br/>
+<%end%>
+<%=f.submit "Save"%><br/>
+<%end%>

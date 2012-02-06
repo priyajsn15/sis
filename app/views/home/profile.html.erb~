@@ -1,0 +1,5 @@
+<h3>Profile Page</h3>
+
+Mail id:<%=current_user.email%>
+
+<%=link_to 'Back',home_index_path%>

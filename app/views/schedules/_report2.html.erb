@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Status');
+        data.addRows([
+          ['Complete',<%=@complete_assignment.count%>],
+          ['Pending',<%=@pending_assignment.count%>]
+        ]);
+          
+          var options = {
+          width: 200, height: 200,
+          title: 'Assignment Rate'
+        };
+        
+        var chart = new google.visualization.PieChart(document.getElementById('chart2'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+<div id="chart2">
+</div>
+</body>
+</html>

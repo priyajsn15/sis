@@ -1,0 +1,38 @@
+<h3>Goals</h3>
+<%if @goals.present?%>
+<table border=1>
+<thead>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>From Date</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+<% @goals.each do |g| %>
+	<%a=g.id%>
+  <tr class="parent" id="<%=a%>" style="cursor: pointer; " title="Click to expand/collapse">
+    <td><%=g.id%></td>
+    <td><%= g.title%></td>
+    <td><%= g.from_date%></td>
+    <td> 
+ <%=link_to "Edit",edit_goal_path(g)%>
+ </td>
+  </tr>
+   <tr class="child-<%=a%>" style="display: none; ">
+    <td></td>
+    <td>Notes:<%= g.notes%></td>
+    <td>ToDate:<%= g.to_date%></td>
+    <td>Assignedto:<%= g.assign_to%>
+    Category:<%if g.category_a==true%><%= g.category_a%><%end%>
+        <%if g.category_b==true%><%= g.category_b%><%end%>
+        <%if g.category_c==true%><%= g.category_c%><%end%>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<%else%>
+<p>No Users</p>
+<%end%>

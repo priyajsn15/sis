@@ -1,0 +1,31 @@
+<h3>Profile Page</h3>
+<%if current_user.is_admin?%>
+First Name:<%=current_user.first_name%>
+<%if !@user.offer.nil?%><%= image_tag  @user.offer.banner.url(:thumb) %><br/><%end%>
+Last Name:<%=current_user.last_name%><br/>
+Mail id:<%=current_user.email%><br/>
+Dob:<%=current_user.dob%><br/>
+Phone no:<%=current_user.phone_no%><br/>
+Address:<%=current_user.address%><br/>
+City:<%=current_user.city%><br/>
+State:<%=current_user.state%><br/>
+<%end%>
+<%unless current_user.is_admin?%>
+First Name:<%=current_user.first_name%>
+<%if !@user.offer.nil?%><%= image_tag  @user.offer.banner.url(:thumb)%><br/><%end%>
+Last Name:<%=current_user.last_name%><br/>
+Mail id:<%=current_user.email%><br/>
+Dob:<%=current_user.dob%><br/>
+Phone no:<%=current_user.phone_no%><br/>
+Address:<%=current_user.address%><br/>
+City:<%=current_user.city%><br/>
+State:<%=current_user.state%><br/>
+Physical Health Provider:<%=current_user.provider_health%><br/>
+Medications:<%=current_user.medications%><br/>
+Allergies:<%=current_user.allergies%><br/>
+Mental Health Provider:<%=current_user.provider_mental%><br/>
+Treatment History:<%=current_user.treatment_history%><br/>
+Recovery Plan:<%=current_user.recovery_plan%><br/>
+<%end%>
+<%=link_to 'Back',schedules_path%>
+

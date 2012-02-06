@@ -1,0 +1,10 @@
+Title:<%= @event.title%><br/>
+Notes:<%= @event.notes%><br/>
+FromDate:<%= @event.from_date%><br/>
+ToDate:<%= @event.to_date%><br/>
+Assignedto:<%= @event.assign_to%><br/>
+Category A:<%= @event.category_a%><br/>
+Category B:<%= @event.category_b%><br/>
+Category C:<%= @event.category_c%><br/>
+<%= link_to 'Edit', edit_event_path(@event)%>
+<%= link_to 'Back', events_path%>

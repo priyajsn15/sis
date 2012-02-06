@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+Title:<%= @assignment.title%><br/>
+Notes:<%= @assignment.notes%><br/>
+FromDate:<%= @assignment.from_date%><br/>
+ToDate:<%= @assignment.to_date%><br/>
+Assignedto:<%= @assignment.assign_to%><br/>
+Category A:<%= @assignment.category_a%><br/>
+Category B:<%= @assignment.category_b%><br/>
+Category C:<%= @assignment.category_c%><br/>
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

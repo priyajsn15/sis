@@ -1,0 +1,10 @@
+class AddCol < ActiveRecord::Migration
+  def up
+   add_column(:to_dos,:category_a,:boolean)
+   add_column(:to_dos,:category_b,:boolean)
+   add_column(:to_dos,:category_c,:boolean)
+  end
+
+  def down
+  end
+end

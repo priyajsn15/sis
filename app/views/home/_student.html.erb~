@@ -1,0 +1,94 @@
+<script src="/script/livevalidation_standalone.js">
+</script>
+<h2>Create Student</h2>
+<%=form_for(:user,:url=>{:action=>'create_user',:controller=>'home',:student=>'true'},:html => {:multipart => true}) do |f|%>
+  <%#= f.error_messages %>
+  <div>First Name<br />
+  <%=h f.text_field :first_name %></div>
+  <div>Last Name<br />
+  <%=h f.text_field :last_name %></div>
+  <div>DateOfBirth<br />
+  <%=h f.text_field :dob %></div>
+  <div>Email<br />
+  <%=h f.email_field :email %></div>
+  <div>Phone no<br />
+  <%=h f.text_field :phone_no %></div>
+  <div>Address<br />
+  <%=h f.text_field :address %></div>
+  <div>City<br />
+  <%=h f.text_field :city %></div>
+  <div>State<br />
+  <%=h f.select(:state,[["TN","TN"],["KT","KT"],["AP","AP"]], {:include_blank => 'Please select'})%></div>
+  <div>Zip<br />
+  <%=h f.text_field :pincode %></div>
+  <%=fields_for :offer do |o|%>
+  <%= o.error_messages %>
+  <div>Attach File<br />
+  <%= o.file_field :banner %></div>
+  <%end%>
+  <div>Physical Health<br />
+  <div>PrimaryCareProvider<br />
+  <%=h f.text_field :provider_health %></div>
+  <div>Medications<br />
+  <%=h f.text_field :medications %></div>
+  <div>Allergies<br />
+  <%=h f.text_field :allergies %></div></div>
+  <div>Mental Health<br />
+  <div>PrimaryCareProvider<br />
+  <%=h f.text_field :provider_mental %></div>
+  <div>TreatmentHistory<br />
+  <%=h f.text_field :treatment_history %></div>
+  <div>Recovery Plan<br />
+  <%=h f.text_field :recovery_plan %></div></div>
+  <div>Password<br />
+  <%=h f.password_field :password %></div>
+  <div>Password_confirmation<br />
+  <%=h f.password_field :password_confirmation %></div>
+  <div><%= submit_tag "Create" %></div>
+<% end %>
+<script> 
+var f1 = new LiveValidation('user_first_name');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("user_last_name");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("user_dob");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("user_email");
+f4.add( Validate.Presence);
+f4.add( Validate.Email );
+var f4 = new LiveValidation("user_phone_no");
+f4.add( Validate.Presence );
+f4.add( Validate.Numericality, { onlyInteger: true });
+var f4 = new LiveValidation("user_address");
+f4.add( Validate.Presence );
+var f5 = new LiveValidation("user_city");
+f5.add( Validate.Presence );
+var f6 = new LiveValidation("user_state");
+f6.add( Validate.Presence );
+var f7 = new LiveValidation("user_pincode");
+f7.add( Validate.Presence);
+f7.add( Validate.Numericality, { onlyInteger: true });
+var f9 = new LiveValidation("user_provider_health");
+f9.add( Validate.Presence );
+var f10 = new LiveValidation("user_medications");
+f10.add( Validate.Presence );
+var f11 = new LiveValidation("user_provider_mental");
+f11.add( Validate.Presence );
+var f12 = new LiveValidation("user_treatment_history");
+f12.add( Validate.Presence );
+var f13 = new LiveValidation("user_recovery_plan");
+f13.add( Validate.Presence );
+var f14 = new LiveValidation("user_allergies");
+f14.add( Validate.Presence );
+var f8 = new LiveValidation("user_password");
+f8.add( Validate.Presence);
+f8.add( Validate.Valid);
+var f8 = new LiveValidation("user_password_confirmation");
+f8.add( Validate.Presence);
+f8.add(Validate.Confirmation, { match: 'user_password' } );
+</script>
+
+
+
+
+

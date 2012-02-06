@@ -1,0 +1,27 @@
+class AddingColumnToTasks < ActiveRecord::Migration
+  def up
+    add_column :to_dos,:from_date,:date
+    add_column :to_dos,:to_date,:date
+    add_column :to_dos,:from_time,:time
+    add_column :to_dos,:to_time,:time
+    add_column :to_dos,:status,:boolean
+    add_column :assignments,:from_date,:date
+    add_column :assignments,:to_date,:date
+    add_column :assignments,:from_time,:time
+    add_column :assignments,:to_time,:time
+    add_column :assignments,:status,:boolean
+    add_column :events,:from_date,:date
+    add_column :events,:to_date,:date
+    add_column :events,:from_time,:time
+    add_column :events,:to_time,:time
+    add_column :events,:status,:boolean
+    add_column :goals,:from_date,:date
+    add_column :goals,:to_date,:date
+    add_column :goals,:from_time,:time
+    add_column :goals,:to_time,:time
+    add_column :goals,:status,:boolean
+  end
+
+  def down
+  end
+end

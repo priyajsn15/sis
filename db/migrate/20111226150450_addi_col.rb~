@@ -1,0 +1,16 @@
+class AddiCol < ActiveRecord::Migration
+  def up
+   add_column(:assignments,:category_a,:boolean)
+   add_column(:assignments,:category_b,:boolean)
+   add_column(:assignments,:category_c,:boolean)
+   add_column(:events,:category_a,:boolean)
+   add_column(:events,:category_b,:boolean)
+   add_column(:events,:category_c,:boolean)
+   add_column(:goals,:category_a,:boolean)
+   add_column(:goals,:category_b,:boolean)
+   add_column(:goals,:category_c,:boolean)
+  end
+
+  def down
+  end
+end

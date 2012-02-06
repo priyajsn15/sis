@@ -1,0 +1,14 @@
+<% if current_user.is_admin==false%>
+<nav>
+       <%=link_to 'Schedule',schedules_path%>
+       <%=link_to 'Todo',to_dos_path%>
+       <%=link_to 'Assignments',assignments_path%>
+        <%=link_to 'Events',events_path%>
+        <%=link_to 'Goals',goals_path%>
+</nav>
+<nav>
+     <%=link_to 'Today',schedules_path(:today=>true)%>
+     <%=link_to 'Week',schedules_path(:week=>true)%>
+     <%=link_to 'Month',schedules_path(:month=>true)%>
+</nav>
+<%end%>

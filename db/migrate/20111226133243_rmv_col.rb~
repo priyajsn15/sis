@@ -1,0 +1,8 @@
+class RmvCol < ActiveRecord::Migration
+  def up
+    remove_column(:to_dos,:category)
+  end
+
+  def down
+  end
+end

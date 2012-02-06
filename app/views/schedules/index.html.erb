@@ -1,0 +1,189 @@
+<script src="/script/livevalidation_standalone.js"></script>
+<div id="td">
+<%= render :partial => "/to_dos/name" %>
+<%= will_paginate @to_dos %>
+</div>
+<div id="but">
+<%if current_user.is_admin?%>
+<%=button_tag 'Add Todo'%>
+<%end%>
+</div>
+<div id="new_form"><br/>
+<h1>New to_do</h1>
+<%= form_for @to_do do |todo|%>
+Title:<%= todo.text_field :title %><br/>
+Notes:<%= todo.text_area :notes,:size => "20*20" %><br/>
+From Date:<%= todo.text_field :start%><br/>
+To Date:<%= todo.text_field :end%><br/>
+From Time:<%= todo.text_field :from_time%><br/>
+To Time:<%= todo.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]})%><br/>
+Category:<%=todo.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=todo.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=todo.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%= todo.submit "submit" %>
+<%end%>
+</div>
+
+<div id="td">
+  <%= render :partial=>"/assignments/name"%>
+  <%= will_paginate @assignments %>
+</div>
+<div id="but1">
+<%if current_user.is_admin?%>
+<%= button_tag 'Add Assignment'%>
+<%end%>
+</div>
+<div id="form1">
+<br/>
+<h1>New Assignment</h1>
+<%=form_for @assignment do |f|%>
+Title:<%=f.text_field :title%><br/>
+Notes:<%=f.text_area  :notes, :size => "20*20"%><br/>
+FromDate:<%=f.text_field :from_date%><br/>
+ToDate:<%=f.text_field :to_date%><br/>
+From Time:<%= f.text_field :from_time%><br/>
+To Time:<%= f.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]})%><br/>
+Category:<%=f.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=f.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=f.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%=f.submit "Save"%><br/>
+<%end%>
+</div>
+
+<div id="td">
+  <%=render :partial => "/events/name"%>
+  <%= will_paginate @events%>
+</div>
+<div id="but2">
+<%if current_user.is_admin?%>
+<%= button_tag "Add Events"%>
+<%end%>
+</div>
+<div id="form2">
+<br/>
+<h1>New Event</h1>
+<%=form_for @event do |f|%>
+Title:<%=f.text_field :title%><br/>
+Notes:<%=f.text_area  :notes, :size => "20*20"%><br/>
+FromDate:<%=f.text_field :from_date%><br/>
+ToDate:<%=f.text_field :to_date%><br/>
+From Time:<%= f.text_field :from_time%><br/>
+To Time:<%= f.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]})%><br/>
+Category:<%=f.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=f.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=f.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%=f.submit "Save"%><br/>
+<%end%>
+</div>
+
+<div id="td">
+  <%=render :partial => "/goals/name"%>
+  <%= will_paginate @goals%>
+</div>
+<div id="but3">
+<%if current_user.is_admin?%>
+<%= button_tag "Add Goals"%>
+<%end%>
+</div>
+<div id="form3"><br/>
+<h1>New Goals</h1>
+<%=form_for @goal do |f|%>
+Title:<%=f.text_field :title%><br/>
+Notes:<%=f.text_area  :notes, :size => "20*20"%><br/>
+FromDate:<%=f.text_field :from_date%><br/>
+ToDate:<%=f.text_field :to_date%><br/>
+From Time:<%= f.text_field :from_time%><br/>
+To Time:<%= f.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]})%><br/>
+Category:<%=f.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=f.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=f.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%=f.submit "Save"%><br/>
+<%end%>
+</div>
+
+<script> 
+var f1 = new LiveValidation('to_do_title');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_notes');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("to_do_from_date");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("to_do_to_date");
+f3.add( Validate.Presence );
+var f2 = new LiveValidation("to_do_from_time");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("to_do_to_time");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("users_");
+f4.add( Validate.Presence);
+var f1 = new LiveValidation('to_do_category_a',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_category_b',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_category_c',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('assignment_title');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('assignment_notes');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("assignment_from_date");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("assignment_to_date");
+f3.add( Validate.Presence );
+var f2 = new LiveValidation("assignment_from_time");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("assignment_to_time");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("users_");
+f4.add( Validate.Presence);
+var f1 = new LiveValidation('assignment_category_a',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('assignment_category_b',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('assignment_category_c',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('event_title');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('event_notes');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("event_from_date");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("event_to_date");
+f3.add( Validate.Presence );
+var f2 = new LiveValidation("event_from_time");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("event_to_time");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("users_");
+f4.add( Validate.Presence);
+var f1 = new LiveValidation('event_category_a',{onlyOnSubmit: true } );
+f1.add( Validate.Acceptance);
+var f1 = new LiveValidation('event_category_b',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('event_category_c',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('goal_title');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('goal_notes');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("goal_from_date");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("goal_to_date");
+f3.add( Validate.Presence );
+var f2 = new LiveValidation("goal_from_time");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("goal_to_time");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("users_");
+f4.add( Validate.Presence);
+var f1 = new LiveValidation('goal_category_a',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('goal_category_b',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('goal_category_c',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+</script>

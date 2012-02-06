@@ -1,0 +1,36 @@
+<h2>Admin</h2><br>
+<table>
+<tr>
+<th>Email</th>
+<th>Action</th>
+<th>Action</th>
+</tr>
+<%@user.each do |a|%>
+<%if a.is_admin?%>
+<tr>
+<td><%=a.email%></td>
+<td><%=link_to 'Edit',edit_home_path(a.id)%></td>
+<td><%=link_to 'Image Edit',edit1_home_path(a.id)%></td></tr>
+<%end%>
+<%end%></table><br/><br/>
+<h2>Student</h2><br>
+<table>
+<tr>
+<th>Email</th>
+<th>Action</th>
+<th>Action</th>
+</tr>
+<%@user.each do |a|%>
+<%unless a.is_admin?%>
+<tr>
+<td><%=a.email%></td>
+<td><%=link_to 'Edit',edit_home_path(a.id)%></td>
+<td><%=link_to 'Image Edit',edit1_home_path(a.id)%></td></tr>
+<%end%>
+<%end%>
+</table>
+
+
+
+
+

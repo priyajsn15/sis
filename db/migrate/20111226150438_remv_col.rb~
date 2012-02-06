@@ -1,0 +1,10 @@
+class RemvCol < ActiveRecord::Migration
+  def up
+   remove_column(:events,:category)
+   remove_column(:assignments,:category)
+   remove_column(:goals,:category)
+  end
+
+  def down
+  end
+end

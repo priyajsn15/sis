@@ -1,0 +1,37 @@
+<h3>Assignment</h3>
+<%if @assignments.present?%>
+<table border=1>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>From Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+<tbody>
+<% @assignments.each do |f| %>
+<%a=f.id%>
+  <tr class="parent" id="<%=a%>" style="cursor: pointer; " title="Click to expand/collapse">
+    <td><%= f.id%></td>
+    <td><%= f.title%></td>
+    <td><%= f.from_date%></td>
+   <td><%=link_to "Edit",edit_assignment_path(f)%>
+ </td>
+  </tr>
+  <tr class="child-<%=a%>" style="display: none; ">
+    <td></td>
+    <td>Notes:<%= f.notes%></td>
+    <td>ToDate:<%= f.to_date%></td>
+    <td>Assignedto:<%= f.assign_to%>
+    Category:<%if f.category_a==true%><%= f.category_a%><%end%>
+        <%if f.category_b==true%><%= f.category_b%><%end%>
+        <%if f.category_c==true%><%= f.category_c%><%end%>
+    </td>
+  </tr>
+<%end%>
+</tbody>
+</table>
+<%else%>
+<p>No Users</p>
+<%end%>

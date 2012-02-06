@@ -1,0 +1,13 @@
+<table>
+<tr>
+<th>Admin</th>
+<th>Profile</th>
+</tr>
+<%@user.each do |a|%>
+<%if a.is_admin? %>
+<tr><td><%=a.first_name%></td>
+<td><%= link_to 'Edit', edit_home_path(@to_do) %></td>
+</tr>
+<%end%>
+<%end%>
+</table>

@@ -1,0 +1,12 @@
+<div id="r1">
+<%=render :partial =>"report1"%>
+</div>
+<div id="r2">
+<%=render :partial =>"report2"%>
+</div>
+<div id="r3">
+<%=render :partial =>"report3"%>
+</div>
+<div id="r4">
+<%=render :partial =>"report4"%>
+</div>

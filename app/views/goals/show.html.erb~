@@ -1,0 +1,10 @@
+Title:<%= @goal.title%><br/>
+Notes:<%= @goal.notes%><br/>
+FromDate:<%= @goal.from_date%><br/>
+ToDate:<%= @goal.to_date%><br/>
+Assignedto:<%= @goal.assign_to%><br/>
+Category A:<%= @goal.category_a%><br/>
+Category B:<%= @goal.category_b%><br/>
+Category C:<%= @goal.category_c%><br/>
+<%= link_to 'Edit', edit_goal_path(@to_do) %>
+<%= link_to 'Back', goals_path %>

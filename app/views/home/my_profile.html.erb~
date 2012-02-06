@@ -1,0 +1,5 @@
+<h3>Profile Page</h3>
+<%=form_for :user do |f|%>
+Mail id:<%=current_user.email%>
+<%end%>
+<%=link_to 'Back',home_index_path%>

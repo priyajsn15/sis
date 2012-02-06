@@ -1,0 +1,36 @@
+<html>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Status');
+        data.addRows([
+          ['Complete',<%=@complete%>],
+          ['Pending',<%=10-@complete%>]
+        ]);
+
+        var options = {
+          width: 450, height: 300,
+          title: 'Task Chart'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+<div id="chart_div">
+</div>
+</body>
+</html>
+
+
+
+
+
+

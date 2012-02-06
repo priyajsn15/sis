@@ -1,0 +1,18 @@
+<h1>New Goals</h1>
+<%=form_for([@goal]) do |f|%>
+Title:<%=f.text_field :title%><br/>
+Notes:<%=f.text_area  :notes, :size => "20*20"%><br/>
+FromDate:<%=f.text_field :from_date%><br/>
+ToDate:<%=f.text_field :to_date%><br>
+Assigned To:<%=f.text_field :assign_to%><br/>
+Category:<%=f.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=f.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=f.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%=f.submit "Save"%><br/>
+<%=text_field_tag(:file)%>
+<%= button_to "AttachFile"%>
+<%end%>
+<%= link_to 'Back',goals_path%>
+
+
+

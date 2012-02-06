@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+ 
+  <link href="/stylesheets/style1.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/jquery-ui-1.7.3.custom.css" rel="stylesheet" type="text/css" />	
+<script type="text/javascript" src="/script/index.js"></script>
+<script type="text/javascript" src="/script/index1.js"></script>
+<script type="text/javascript" src="/script/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="/script/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript" src="/script/index2.js">
+</script>
+<script type="text/javascript" src="/script/index3.js">
+</script>
+<script type="text/javascript" src="/script/index4.js">
+</script>
+<script type="text/javascript" src="/script/sample.js">
+</script>
+<script type="text/javascript" src="/script/slide.js">
+</script>
+</head>
+<body>
+   <div id="wrapper">
+     <div id="header">
+            <h1><a href="#"><b>Student Information System</b></a></h1>
+        </div>
+<div id="menu">
+	<ul><%if current_user%>
+	<li><%=link_to 'Schedule',schedules_path%></li>
+        <li><%=link_to 'Todo',to_dos_path%></li>
+        <li><%=link_to 'Assignments',assignments_path%></li>
+        <li><%=link_to 'Events',events_path%></li>
+        <li><%=link_to 'Goals',goals_path%></li>
+        <li><%=link_to 'Report',schedules_report_path%></li>                                     
+        <%end%></ul>
+</div>
+<div id="demo1">
+  <h3><b>Depression Level</b></h3>
+  <div id="slider">
+  </div>
+<script>
+	$(document).ready(function() {
+		//~ $("#slider").slider({handle:'.slider-handle',range:'min',min:1,max:5,value:<%=current_user.depression_level%>})
+		$("#slider").slider( "option", "value", <%=current_user.depression_level%> );
+   });
+      
+</script>   
+</div>
+
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page">
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="#">WELCOME</a></h2>
+						<p class="meta">
+                                                  <span class="date">January 06, 2012</span>
+                                                  <span class="posted"><%if current_user%><%= link_to "My Page",schedules_mypage_path(current_user.id)%><%if current_user.is_admin?%><a href="/home">Home</a><%end%>
+                                                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %><%end%></span>
+                                                </p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+                                                <div style="clear: both;">&nbsp;</div>
+							   <%= yield %>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					
+							
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>Copyrights & Designed by Priyadarsini</p>
+</div>
+<!-- end #footer -->
+
+
+</body>
+</html>

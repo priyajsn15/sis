@@ -1,0 +1,21 @@
+class AddSomeColtoUser < ActiveRecord::Migration
+  def up
+    add_column :users, :first_name, :string
+    add_column :users, :last_name, :string
+    add_column :users, :dob, :date
+    add_column :users, :address, :text
+    add_column :users, :city, :string
+    add_column :users, :state, :string
+    add_column :users, :pincode, :integer
+    add_column :users, :phone_no, :integer
+    add_column :users, :provider_health, :string
+    add_column :users, :medications, :string
+    add_column :users, :allergies, :string
+    add_column :users, :provider_mental, :string
+    add_column :users, :treatment_history, :string
+    add_column :users, :recovery_plan, :string
+  end
+
+  def down
+  end
+end

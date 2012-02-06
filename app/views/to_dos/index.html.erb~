@@ -1,0 +1,70 @@
+<script src="/script/livevalidation_standalone.js">
+</script>
+<nav>
+<%=link_to 'Today', filter_to_dos_path(:today=>true)%>
+<%=link_to 'Week', filter_to_dos_path(:week=>true)%>
+<%=link_to 'Month',filter_to_dos_path(:month=>true)%>
+</nav>
+<div id="td">
+<%= render :partial => "name" %>
+</div>
+<div id="but">
+<%if current_user.is_admin?%>
+<%=button_tag 'Add Todo'%>
+<%end%>
+</div>
+<div id="new_form">
+<h1>New to_do</h1>
+<%= form_for @to_do do |todo|%>
+Title:<%= todo.text_field :title %><br/>
+Notes:<%= todo.text_area :notes,:size => "20*20" %><br/>
+From Date:<%= todo.text_field :start%><br/>
+To Date:<%= todo.text_field :end%><br/>
+From Time:<%= todo.text_field :from_time%><br/>
+To Time:<%= todo.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]})%><br/>
+Category:<%=todo.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=todo.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=todo.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%= todo.submit "submit" %>
+<%end%>
+</div>
+<h2 class="title">Event Calendar</h2>
+
+<div id="calendar"></div>
+
+<script type="text/javascript" src="/script/fullcalendar.min.js"></script>
+<link href="/stylesheets/fullcalendar.css" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/fullcalendar.print.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+  //<![CDATA[
+  jQuery(document).ready(function($) {
+    $('#calendar').fullCalendar({
+      header:{left:'prev,next today',center:'title',right:'month,agendaWeek,agendaDay'},
+      editable: true,
+      events:'<%= to_dos_path(@to_dos, :format => :json) %>'
+    });
+  });
+  //]]>
+</script>
+<script> 
+var f1 = new LiveValidation('to_do_title');
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_notes');
+f1.add( Validate.Presence );
+var f2 = new LiveValidation("to_do_start");
+f2.add( Validate.Presence );
+var f3 = new LiveValidation("to_do_end");
+f3.add( Validate.Presence );
+var f4 = new LiveValidation("users_");
+f4.add( Validate.Presence);
+var f1 = new LiveValidation('to_do_category_a',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_category_b',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+var f1 = new LiveValidation('to_do_category_c',{onlyOnSubmit: true } );
+f1.add( Validate.Presence );
+</script>
+
+
+

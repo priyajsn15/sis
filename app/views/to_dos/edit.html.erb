@@ -1,0 +1,19 @@
+<%=form_for @to_do do |todo|%>
+<%if current_user.is_admin?%>
+Title:<%= todo.text_field :title %><br/>
+Notes:<%= todo.text_area :notes,:size => "20*20" %><br/>
+From Date:<%= todo.text_field :start%><br/>
+To Date:<%= todo.text_field :end%><br/>
+From Time:<%= todo.text_field :from_time%><br/>
+To Time:<%= todo.text_field :to_time%><br/>
+Assign To:<%= select_tag "users[]", options_for_select(@user.collect{|x| [x.first_name,x.id]}),:prompt=>"Select Student"%><br/>
+Category:<%=todo.check_box(:category_a)%><%=label_tag(:category_a, "A")  %>
+         <%=todo.check_box(:category_b)%><%= label_tag(:category_b, "B") %>
+         <%=todo.check_box(:category_c)%><%= label_tag(:category_c, "C") %>
+<%end%>
+<%unless current_user.is_admin?%>
+Status:<%=todo.radio_button  "status", "1"%>Complete
+<%= todo.radio_button  "status", "0"%>Pending<br/><br/>
+<%end%>
+<%=todo.submit "Save"%><br/>
+<%end%>

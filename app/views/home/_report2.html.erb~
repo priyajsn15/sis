@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Complete');
+        data.addColumn('number', 'Pending');
+        data.addRows([
+          ['2011', 1000, 400],
+          ['2012', 1170, 460],
+        ]);
+
+        var options = {
+           width: 150, height: 150,
+          title: 'Assignment'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart2'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart2"></div>
+  </body>
+</html>

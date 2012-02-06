@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Status');
+        data.addRows([
+          ['Complete',<%=@complete_goal.count%>],
+          ['Pending',<%=@pending_goal.count%>]
+        ]);
+          
+          var options = {
+         width: 200, height: 200,
+          title: 'Goal Completion Rate'
+        };
+        
+        var chart = new google.visualization.PieChart(document.getElementById('chart4'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+<div id="chart4">
+</div>
+</body>
+</html>
